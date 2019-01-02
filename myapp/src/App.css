@@ -1,0 +1,123 @@
+body {
+  text-align: center;
+  margin: auto;
+  min-width: 1000px;
+}
+
+.App {
+  background-color: rgb(217, 217, 255);
+}
+
+h2,
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.input1234 {
+  border: 4px rgb(120, 103, 162) groove;
+  width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(240, 240, 250);
+}
+
+.input5678 {
+  border: 4px rgb(120, 103, 162) groove;
+  width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(240, 240, 250);
+}
+
+.input23 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.input56 {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.input4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.input2 {
+  width: 500px;
+}
+
+.input3 {
+  width: 180px;
+}
+
+textarea,
+input,
+select,
+button {
+  margin: 3px;
+}
+
+button {
+  width: 160px;
+  margin-left: 20px;
+  margin: auto;
+}
+
+#table-wrapper table {
+  border: 1px gray solid;
+  margin: auto;
+  padding: 10px;
+  background: rgb(210, 208, 248);
+  color: black;
+}
+
+#table-wrapper table th {
+  font-weight: bold;
+}
+thead {
+  margin: auto;
+}
+
+#table-wrapper table td:nth-child(12),
+#table-wrapper table td:nth-child(11) {
+  width: 15%;
+}
+
+#table-wrapper {
+  position: relative;
+  width: 90%;
+  margin: auto;
+}
+
+#table-scroll {
+  height: 400px;
+  overflow: auto;
+  border: 4px rgb(120, 103, 162) groove;
+  font-size: 10px;
+}
+
+#table-wrapper table th,
+#table-wrapper table td {
+  border: 1px solid gray;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+#myChart {
+  border: 4px rgb(120, 103, 162) groove;
+}
