@@ -26,7 +26,7 @@ class NewDataInsertSection extends React.Component {
         <form className="newDataInsertSection" onSubmit={this.handleClick}>
           <div className="input1234">
             <textarea
-              class="input1"
+              className="input1"
               name="addedData"
               type="text"
               ref={this.urlRef}
@@ -35,23 +35,23 @@ class NewDataInsertSection extends React.Component {
             />
             <div className="input23">
               <input
-                class="input2"
+                className="input2"
                 name="date"
                 type="text"
                 ref={this.dateRef}
                 // required
                 placeholder="Enter the Date here"
               />
-              <select class="input3" name="type" ref={this.typeRef}>
-                <option disabled selected>
+              <select className="input3" name="type" ref={this.typeRef}>
+                {/* <option disabled selected>
                   Select the type of data
-                </option>
+                </option> */}
                 <option value="JSON">JSON</option>
                 <option value="URL">URL</option>
               </select>
             </div>
             <div className="input4">
-              <button class="input4" type="submit">
+              <button className="input4" type="submit">
                 Update Database ->
               </button>
             </div>

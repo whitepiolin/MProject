@@ -1,11 +1,10 @@
 import React from "react";
 
-
 class HousesDataTableSection extends React.Component {
   render() {
     return (
       <div className="HousesDataTableSection">
-        <h2>HousesDataTableSection</h2>
+        <h2>Houses Data Section</h2>
         <div id="table-wrapper">
           <div id="table-scroll">
             <table>
@@ -22,12 +21,11 @@ class HousesDataTableSection extends React.Component {
                   <th>Currency</th>
                   <th>Market Date</th>
                   <th>Link</th>
-                  {/* <th>Description</th> */}
                 </tr>
               </thead>
               <tbody>
-                {this.props.housesData.map(x => (
-                  <tr className="dynamicHouses">
+                {this.props.housesSampleData.map((x, i) => (
+                  <tr className="dynamicHouses" key={i}>
                     <td>{x.location.country}</td>
                     <td>{x.location.city}</td>
                     <td>{x.location.address}</td>
@@ -41,7 +39,6 @@ class HousesDataTableSection extends React.Component {
                     <td>
                       <a href="{x.url}">{x.url}</a>
                     </td>
-                    {/* <td>{x.description}</td> */}
                   </tr>
                 ))}
               </tbody>
