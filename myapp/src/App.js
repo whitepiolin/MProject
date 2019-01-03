@@ -11,6 +11,7 @@ import topPicture from "./images/toppicture.jpg";
 class App extends Component {
   state = {
     newAddedDatas: {},
+    housesData: [],
     housesSampleData: [],
     housesDatabaseData: []
   };
@@ -18,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     fetch("http://localhost:3000/posts")
       .then(response => response.json())
-      .then(housesDatabaseData => this.setState({ housesDatabaseData}));
+      .then(housesData => this.setState({ housesData}));
   }
 
   addNewDataToDatabase = data => {
@@ -39,12 +40,12 @@ class App extends Component {
   };
 
   loadDatabaseData = () => {
+    this.setState({ housesDatabaseData: this.state.housesData});
     console.log("database data loaded");
-    console.log(this.state.housesData);
   };
 
   removeDatabaseData = () => {
-    // this.setState({ housesData: [] });
+    this.setState({ housesDatabaseData: []});
     console.log("database data removed");
   };
 
