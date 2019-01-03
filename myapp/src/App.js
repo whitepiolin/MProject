@@ -18,7 +18,7 @@ class App extends Component {
   componentDidMount() {
     fetch("http://localhost:3000/posts")
       .then(response => response.json())
-      .then(housesData => this.setState({ housesData }));
+      .then(housesDatabaseData => this.setState({ housesDatabaseData}));
   }
 
   addNewDataToDatabase = data => {
@@ -67,7 +67,9 @@ class App extends Component {
           />
         </section>
         <section className="section">
-          <HousesDataTableSection housesSampleData={this.state.housesSampleData} />
+          <HousesDataTableSection 
+          housesSampleData={this.state.housesSampleData} 
+          housesDatabaseData={this.state.housesDatabaseData}/>
         </section>
         <section className="section">{}</section>
         <section className="section">
