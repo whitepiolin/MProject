@@ -45,7 +45,6 @@ class App extends Component {
     console.log("sampledata loaded");
   };
   
-
   removeSampleData = () => {
     this.setState({ housesSampleData: [] });
     console.log("sampledata removed");
