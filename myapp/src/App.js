@@ -5,7 +5,6 @@ import HousesDataTableSection from "./components/table";
 import StatsChartSection from "./components/chart";
 import sampleHouses from "./data/sampleDataSource";
 import DataSelectSection from "./components/DataSelectSection";
-// import Posts from "./components/posts";
 import topPicture from "./images/toppicture.jpg";
 
 class App extends Component {
@@ -19,14 +18,26 @@ class App extends Component {
   componentDidMount() {
     fetch("http://localhost:3000/posts")
       .then(response => response.json())
-      .then(housesData => this.setState({ housesData}));
+      .then(housesData => this.setState({ housesData }));
   }
 
-  addNewDataToDatabase = data => {
-    console.log("check react console state");
-    const newAddedDatas = { ...this.state.newAddedDatas };
-    newAddedDatas[`newData${Date.now()}`] = data;
-    this.setState({ newAddedDatas: newAddedDatas });
+  // addNewDataToDatabase = data => {
+  //   console.log("check react console state");
+  //   const newAddedDatas = { ...this.state.newAddedDatas };
+  //   newAddedDatas[`newData${Date.now()}`] = data;
+  //   this.setState({ newAddedDatas: newAddedDatas });
+  // };
+
+  addNewDataToDatabase = newData => {
+    fetch("http://localhost:3000/newDataInsertion", {
+      method: "POST",
+      body: newData,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then(console.log("addNewDataToDatabase worked"))
   };
 
   loadSampleData = () => {
@@ -40,15 +51,14 @@ class App extends Component {
   };
 
   loadDatabaseData = () => {
-    this.setState({ housesDatabaseData: this.state.housesData});
+    this.setState({ housesDatabaseData: this.state.housesData });
     console.log("database data loaded");
   };
 
   removeDatabaseData = () => {
-    this.setState({ housesDatabaseData: []});
+    this.setState({ housesDatabaseData: [] });
     console.log("database data removed");
   };
-
 
   render() {
     return (
@@ -68,16 +78,17 @@ class App extends Component {
           />
         </section>
         <section className="section">
-          <HousesDataTableSection 
-          housesSampleData={this.state.housesSampleData} 
-          housesDatabaseData={this.state.housesDatabaseData}/>
+          <HousesDataTableSection
+            housesSampleData={this.state.housesSampleData}
+            housesDatabaseData={this.state.housesDatabaseData}
+          />
         </section>
         <section className="section">{}</section>
         <section className="section">
-          <StatsChartSection 
-          housesDatabaseData={this.state.housesDatabaseData}
-          housesData={this.state.housesData} />
-          
+          <StatsChartSection
+            housesDatabaseData={this.state.housesDatabaseData}
+            housesData={this.state.housesData}
+          />
         </section>
       </div>
     );

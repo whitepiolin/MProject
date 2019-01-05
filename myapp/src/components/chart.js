@@ -1,8 +1,5 @@
 import React from "react";
 
-// import AAA from "./aaa";
-// import Date from "datejs";
-
 var Chart = require("chart.js");
 
 class StatsChartSection extends React.Component {
@@ -24,22 +21,16 @@ class StatsChartSection extends React.Component {
       if (date === x.AdditionDate && typeof x.AveragePerM2 !== "NaN") {
         total = total + x.AveragePerM2;
       } else {
-        console.log("wrong");
+        // console.log("wrong");
       }
     });
     const eee = database.filter(i => i.AdditionDate === date);
-    console.log(eee.length);
-    console.log(total);
     return total / eee.length;
   }
 
   componentWillUpdate(nextProps) {
-    // console.log(nextProps.housesData);
     const { housesData } = nextProps;
-    console.log(housesData);
-
     const housesStatsObject = [];
-
     housesData.map(x => {
       const src = {
         AdditionDate: this.formatDate(x.addition_date),
@@ -51,13 +42,11 @@ class StatsChartSection extends React.Component {
             Number(x.size_netm2.substr(0, 3))
         )
       };
-
       housesStatsObject.push(src);
       return housesStatsObject;
     });
 
-    console.log(housesStatsObject);
-
+    // console.log(housesStatsObject);
     const statsChart = this.statsChart;
     var dynamicData = [
       this.averagePerM2PerHouse("2018-12-28", housesStatsObject),

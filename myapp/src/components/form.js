@@ -1,37 +1,70 @@
 import React from "react";
 
 class NewDataInsertSection extends React.Component {
-  urlRef = React.createRef();
+  dataRef = React.createRef();
   dateRef = React.createRef();
   typeRef = React.createRef();
 
   handleClick = event => {
     event.preventDefault();
 
-    const newData = {
-      addedData: this.dateRef.current.value,
-      addedDataType: this.typeRef.current.value,
-      additionDate: this.dateRef.current.value
-    };
+    // const newData = {
+    //   addedData: this.urlRef.current.value,
+    //   addedDataType: this.typeRef.current.value,
+    //   additionDate: this.dateRef.current.value
+    // };
 
-    console.log(newData);
+    const newData = this.dataRef.current.value;
+    //newData validation control/ else error
+
     this.props.addNewDataToDatabase(newData);
-    // alert("Your URL captured!");
     event.currentTarget.reset();
   };
+
+  sampleJsonAlert = () => {
+    const jsonFileFormat = [
+      {
+        addition_date: "",
+        link: "",
+        location_country: "",
+        location_city: "",
+        location_address: "",
+        location_coordinates_lat: "",
+        location_coordinates_lng: "",
+        size_parcelm2: "",
+        size_grossm2: "",
+        size_netm2: "",
+        size_rooms: "",
+        price_value: "",
+        price_currency: "",
+        description: "",
+        title: "",
+        images: "",
+        market_date: "",
+        sold: 0
+      }
+    ];
+    alert(JSON.stringify(jsonFileFormat, undefined, 2));
+  };
+
   render() {
     return (
       <div>
         <h2>Database Update Section</h2>
+        <div className="input4">
+          <button className="input4" onClick={this.sampleJsonAlert}>
+            See Sample Input->
+          </button>
+        </div>
         <form className="newDataInsertSection" onSubmit={this.handleClick}>
           <div className="input1234">
             <textarea
               className="input1"
               name="addedData"
               type="text"
-              ref={this.urlRef}
+              ref={this.dataRef}
               // required
-              placeholder="Enter the URL or JSON here"
+              placeholder="Enter your JSON here :  "
             />
             <div className="input23">
               <input
@@ -49,8 +82,6 @@ class NewDataInsertSection extends React.Component {
                 <option value="JSON">JSON</option>
                 <option value="URL">URL</option>
               </select>
-            </div>
-            <div className="input4">
               <button className="input4" type="submit">
                 Update Database ->
               </button>
