@@ -74,7 +74,9 @@ class App extends Component {
         </section>
         <section className="section">{}</section>
         <section className="section">
-          <StatsChartSection />
+          <StatsChartSection 
+          housesDatabaseData={this.state.housesDatabaseData}
+          housesData={this.state.housesData} />
           
         </section>
       </div>

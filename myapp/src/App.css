@@ -114,12 +114,12 @@ thead {
 
 #table-wrapper {
   position: relative;
-  width: 90%;
+  width: 80%;
   margin: auto;
 }
 
 #table-scroll {
-  height: 400px;
+  height: 350px;
   overflow: auto;
   border: 4px rgb(120, 103, 162) groove;
   font-size: 10px;
@@ -131,7 +131,8 @@ thead {
   border-collapse: collapse;
   padding: 5px;
 }
-
-#myChart {
-  border: 4px rgb(120, 103, 162) groove;
+.statsChartSection {
+  width : 700px;
+  margin:auto;
+  padding-bottom:50px;
 }

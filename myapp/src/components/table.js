@@ -1,10 +1,25 @@
 import React from "react";
 
+
+
 class HousesDataTableSection extends React.Component {
+
+  formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+ 
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+ 
+    return [year, month, day].join('-');
+ }
+
   renderSampleData() {
-    
     const sampleSection = this.props.housesSampleData.map((x, i) => (
       <tr className="dynamicHouses" key={i}>
+        <td>SAMPLE</td>
         <td>{x.location.country}</td>
         <td>{x.location.city}</td>
         <td>{x.location.address}</td>
@@ -20,14 +35,15 @@ class HousesDataTableSection extends React.Component {
         </td>
       </tr>
     ));
-    
+
     return sampleSection;
   }
 
   renderDatabaseData() {
-
     const databaseSection = this.props.housesDatabaseData.map((x, i) => (
       <tr className="dynamicHouses" key={i}>
+      <td>{x.addition_date}</td>
+        <td>{this.formatDate(x.addition_date)}</td>
         <td>{x.location_country}</td>
         <td>{x.location_city}</td>
         <td>{x.location_address}</td>
@@ -36,6 +52,7 @@ class HousesDataTableSection extends React.Component {
         <td>{x.size_netm2}</td>
         <td>{x.size_rooms}</td>
         <td>{x.price_value}</td>
+        <td>{Number(x.price_value.substr(2, x.price_value.length-5))*1000}</td>
         <td>{x.price_currency}</td>
         <td>{x.market_date}</td>
         <td>
@@ -43,7 +60,7 @@ class HousesDataTableSection extends React.Component {
         </td>
       </tr>
     ));
-        
+
     return databaseSection;
   }
 
@@ -56,6 +73,8 @@ class HousesDataTableSection extends React.Component {
             <table>
               <thead>
                 <tr>
+                  <th>Search Date</th>
+                  <th>EditedSearch Date</th>
                   <th>Country</th>
                   <th>City</th>
                   <th>Address</th>
@@ -63,6 +82,7 @@ class HousesDataTableSection extends React.Component {
                   <th>Size (Gross Area)</th>
                   <th>Size (Net Area)</th>
                   <th>Rooms</th>
+                  <th>EditedPrice</th>
                   <th>Price</th>
                   <th>Currency</th>
                   <th>Market Date</th>
